@@ -1,0 +1,92 @@
+<suki:SukiWindow xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:suki="https://github.com/kikipoulet/SukiUI"
+        xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        xmlns:vm="using:SukiUI_Demo.ViewModels"       
+        x:Class="SukiUI_Demo.Views.WindowView"
+        x:DataType="vm:WindowViewModel"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Icon="/src/Assets/avalonia-logo.ico"
+        Title="SukiUI Demo"
+        CanFullScreen="True"
+        CanMinimize="True"
+        CanMaximize="True"
+        CanMove="True"
+        CanPin="False"
+        CanResize="True"        
+        IsMenuVisible="True"
+        IsTitleBarVisible="True"
+        ShowBottomBorder="True"
+        ShowTitlebarBackground="True">
+
+    <suki:SukiWindow.Hosts>
+        <suki:SukiToastHost Manager="{Binding ToastManager}" />
+        <suki:SukiDialogHost Manager="{Binding DialogManager}" />
+    </suki:SukiWindow.Hosts>
+
+    <suki:SukiWindow.LogoContent>
+        <Image Width="22" Height="22" VerticalAlignment="Center"
+               RenderOptions.BitmapInterpolationMode="HighQuality"
+               Source="/src/Assets/avalonia-logo.ico" />
+    </suki:SukiWindow.LogoContent>
+
+    <suki:SukiWindow.RightWindowTitleBarControls>
+        <Button Classes="WindowControlsButton" Command="{Binding ToggleThemeCommand}">
+            <materialIcons:MaterialIcon Width="16" Height="16"
+                Foreground="{DynamicResource SukiText}"
+                Kind="{Binding ThemeIcon}" />
+        </Button>
+    </suki:SukiWindow.RightWindowTitleBarControls>
+
+    <suki:SukiWindow.MenuItems>
+        <MenuItem Header="File">
+            <MenuItem Command="{Binding ShowToastCommand}" Header="Test Notification" />
+            <Separator />
+            <MenuItem Command="{Binding ExitCommand}" Header="Exit" />
+        </MenuItem>
+        <MenuItem Header="View">
+            <MenuItem Command="{Binding ToggleThemeCommand}" Header="Toggle Theme" />
+        </MenuItem>
+        <MenuItem Header="Themes">
+            <MenuItem Command="{Binding ToggleThemeCommand}" Header="Blue" />
+            <MenuItem Command="{Binding ToggleThemeCommand}" Header="Green" />
+            <MenuItem Command="{Binding ToggleThemeCommand}" Header="Orange" />
+            <MenuItem Command="{Binding ToggleThemeCommand}" Header="Red" />
+        </MenuItem>
+        <MenuItem Header="Help">
+            <MenuItem Header="Licence" />
+            <MenuItem Header="About" />
+        </MenuItem>
+    </suki:SukiWindow.MenuItems>
+
+    <suki:SukiSideMenu IsSearchEnabled="True"
+                       ItemsSource="{Binding Pages}"
+                       SelectedItem="{Binding SelectedPage}">
+        <suki:SukiSideMenu.ItemTemplate>
+            <DataTemplate x:DataType="vm:PageModel">
+                <suki:SukiSideMenuItem Classes="Compact" Header="{Binding Title}">
+                    <suki:SukiSideMenuItem.Icon>
+                        <materialIcons:MaterialIcon Kind="{Binding Icon}" />
+                    </suki:SukiSideMenuItem.Icon>
+                    <!-- THIS IS THE FIX -->
+                    <suki:SukiSideMenuItem.PageContent>
+                        <ContentControl Content="{Binding Content}" />
+                    </suki:SukiSideMenuItem.PageContent>
+                </suki:SukiSideMenuItem>
+            </DataTemplate>
+        </suki:SukiSideMenu.ItemTemplate>
+
+        <suki:SukiSideMenu.FooterContent>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="8">
+                <Button Classes="Basic" Command="{Binding ToggleThemeCommand}" ToolTip.Tip="Toggle Theme">
+                    <materialIcons:MaterialIcon Width="20" Height="20" Kind="{Binding ThemeIcon}" />
+                </Button>
+                <Button Classes="Basic" Command="{Binding ExitCommand}" ToolTip.Tip="Exit">
+                    <materialIcons:MaterialIcon Width="20" Height="20" Kind="ExitToApp" />
+                </Button>
+            </StackPanel>
+        </suki:SukiSideMenu.FooterContent>
+    </suki:SukiSideMenu>
+</suki:SukiWindow>
