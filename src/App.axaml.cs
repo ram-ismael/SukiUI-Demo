@@ -3,6 +3,8 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
+using SukiUI.Dialogs;
+using SukiUI.Toasts;
 using SukiUI_Demo.Configs;
 using SukiUI_Demo.ViewModels;
 using SukiUI_Demo.Views;
@@ -35,15 +37,16 @@ public partial class App : Application
         return new SukiViews()
 
             // Add main view
-            .AddView<WindowView, WindowViewModel>(services);
+            .AddView<WindowView, WindowViewModel>(services)
+            .AddView<ButtonsView, ButtonsViewModel>(services);
     }
 
     private static ServiceProvider ConfigureServices(ServiceCollection services)
     {
         //services.AddSingleton<ClipboardService>();
-        //services.AddSingleton<PageNavigationService>();
-        //services.AddSingleton<ISukiToastManager, SukiToastManager>();
-        //services.AddSingleton<ISukiDialogManager, SukiDialogManager>();
+        services.AddSingleton<PageNavigationConfig>();
+        services.AddSingleton<ISukiToastManager, SukiToastManager>();
+        services.AddSingleton<ISukiDialogManager, SukiDialogManager>();
 
         return services.BuildServiceProvider();
     }

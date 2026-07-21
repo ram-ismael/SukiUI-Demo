@@ -1,17 +1,17 @@
 <Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:suki="https://github.com/kikipoulet/SukiUI"
-             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-             x:Class="SukiUI_Demo.App"
-             xmlns:local="using:SukiUI_Demo.Configs"
-             RequestedThemeVariant="Default">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:suki="https://github.com/kikipoulet/SukiUI"
+    xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    x:Class="SukiUI_Demo.App"
+    xmlns:configs="using:SukiUI_Demo.Configs"
+    RequestedThemeVariant="Default">
 
     <Application.DataTemplates>
-        <local:ViewLocator />
+        <configs:ViewLocator />
     </Application.DataTemplates>
 
     <Application.Styles>
-        <suki:SukiTheme ThemeColor="Blue" /> <!-- Blue, Green, Red, Orange -->
+        <suki:SukiTheme Locale="en-US" ThemeColor="Blue" /> <!-- Blue, Green, Red, Orange -->
         <materialIcons:MaterialIconStyles />
     </Application.Styles>
 </Application>
