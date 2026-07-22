@@ -108,33 +108,4 @@
 
     </suki:SukiSideMenu>
 
-    <!--
-    <suki:SukiSideMenu IsSearchEnabled="True"
-                       ItemsSource="{Binding Pages}"
-                       SelectedItem="{Binding SelectedPage}">
-        <suki:SukiSideMenu.ItemTemplate>
-            <DataTemplate x:DataType="vm:PageModel">
-                <suki:SukiSideMenuItem Classes="Compact" Header="{Binding Title}">
-                    <suki:SukiSideMenuItem.Icon>
-                        <materialIcons:MaterialIcon Kind="{Binding Icon}" />
-                    </suki:SukiSideMenuItem.Icon>
-                    <suki:SukiSideMenuItem.PageContent>
-                        <ContentControl Content="{Binding Content}" />
-                    </suki:SukiSideMenuItem.PageContent>
-                </suki:SukiSideMenuItem>
-            </DataTemplate>
-        </suki:SukiSideMenu.ItemTemplate>
-
-        <suki:SukiSideMenu.FooterContent>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="8">
-                <Button Classes="Basic" Command="{Binding ToggleThemeCommand}" ToolTip.Tip="Toggle Theme">
-                    <materialIcons:MaterialIcon Width="20" Height="20" Kind="{Binding ThemeIcon}" />
-                </Button>
-                <Button Classes="Basic" Command="{Binding ExitCommand}" ToolTip.Tip="Exit">
-                    <materialIcons:MaterialIcon Width="20" Height="20" Kind="ExitToApp" />
-                </Button>
-            </StackPanel>
-        </suki:SukiSideMenu.FooterContent>
-    </suki:SukiSideMenu>
-    -->
 </suki:SukiWindow>
