@@ -13,16 +13,15 @@
 
     <UserControl.Styles>
         <Style Selector="WrapPanel.PageContainer > suki|GlassCard">
-            <Setter Property="Width" Value="250" />
+            <Setter Property="Width" Value="230" />
             <Setter Property="MinHeight" Value="120" />
-            <Setter Property="Margin" Value="10" />
+            <Setter Property="Margin" Value="8" />
         </Style>
         <Style Selector="Button">
             <Setter Property="Content" Value="Button" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="suki:ButtonExtensions.ShowProgress" Value="{Binding IsBusy}" />
-         
             <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
         </Style>
         <Style Selector="DropDownButton">
@@ -38,33 +37,35 @@
             </Setter>
         </Style>
     </UserControl.Styles>
-    <Grid RowDefinitions="Auto,*" >
-        <suki:GlassCard Classes="HeaderCard" >
-            <suki:GroupBox  Header="Buttons">
-                <StackPanel Classes="HeaderContent">
-                    <TextBlock>
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Header ajustado para manter margens simétricas -->
+        <suki:GlassCard Grid.Row="0" Classes="HeaderCard" Margin="20,20,20,10">
+            <suki:GroupBox Header="Buttons">
+                <StackPanel Classes="HeaderContent" Spacing="8">
+                    <TextBlock TextWrapping="Wrap">
                         SukiUI has a handful of button styles, available in both the standard primary color, but also in the theme's accent color.
                     </TextBlock>
-                    <TextBlock>
+                    <TextBlock TextWrapping="Wrap">
                         Clicking on any one of the buttons will make them all "Busy" for 3 seconds, and how this is achieved can be seen in the XAML for the Busy Button.
                     </TextBlock>
-                    <StackPanel Margin="0,25,0,0" Orientation="Horizontal">
-                        <TextBlock Margin="0,0,0,0"
-                                   VerticalAlignment="Center"
+                    
+                    <StackPanel Margin="0,15,0,0" Orientation="Horizontal" Spacing="12">
+                        <TextBlock VerticalAlignment="Center"
                                    FontWeight="DemiBold"
                                    Text="Buttons Enabled: " />
-                        <ToggleSwitch Margin="15,0,0,0"
-                                      Classes="Switch"
+                        <ToggleSwitch Classes="Switch"
                                       IsChecked="{Binding IsEnabled}" />
-
                     </StackPanel>
                 </StackPanel>
             </suki:GroupBox>
         </suki:GlassCard>
-        <ScrollViewer Grid.Row="1" Margin="20">
+
+        <!-- Grade de botões -->
+        <ScrollViewer Grid.Row="1" Margin="12,0,12,12">
             <WrapPanel Classes="PageContainer">
                 <suki:GlassCard animations:ErrorBehavior.IsActive="{Binding !IsEnabled}"
-                                animations:ErrorBehavior.ErrorMessage="This is an error ! A longer message for testing purpose !">
+                                animations:ErrorBehavior.ErrorMessage="This is an error! A longer message for testing purpose!">
                     <suki:GroupBox Header="Flat Button with icon">
                         <Button suki:ButtonExtensions.Icon="{materialIcons:MaterialIconExt Kind=Calendar}" Classes="Flat" />
                     </suki:GroupBox>
@@ -75,9 +76,10 @@
                         <Button Classes="Rounded Flat" />
                     </suki:GroupBox>
                 </suki:GlassCard>
-                <suki:GlassCard animations:HoverBehavior.Scale="1.1" >
+
+                <suki:GlassCard animations:HoverBehavior.Scale="1.1">
                     <suki:GroupBox Header="Standard Button">
-                        <Button Click="Button_OnClick"  animations:VisibilityBehavior.IsVisible="{Binding IsEnabled}" />
+                        <Button Click="Button_OnClick" animations:VisibilityBehavior.IsVisible="{Binding IsEnabled}" />
                     </suki:GroupBox>
                 </suki:GlassCard>
 
@@ -132,12 +134,6 @@
                 <suki:GlassCard>
                     <suki:GroupBox Header="Success Button">
                         <Button Classes="Success" />
-                    </suki:GroupBox>
-                </suki:GlassCard>
-
-                <suki:GlassCard>
-                    <suki:GroupBox Header="Success Rounded Button">
-                        <Button Classes="Success Rounded" />
                     </suki:GroupBox>
                 </suki:GlassCard>
 
@@ -244,7 +240,7 @@
                 </suki:GlassCard>
 
                 <suki:GlassCard>
-                    <suki:GroupBox Header="Flat DropDownButton">
+                    <suki:GroupBox Header="Flat Accent DropDownButton">
                         <DropDownButton Classes="Flat Accent" />
                     </suki:GroupBox>
                 </suki:GlassCard>

@@ -38,7 +38,10 @@ public partial class App : Application
 
             // Add main view
             .AddView<WindowView, WindowViewModel>(services)
-            .AddView<ButtonsView, ButtonsViewModel>(services);
+            .AddView<ButtonsView, ButtonsViewModel>(services)
+            .AddView<TogglesView, TogglesViewModel>(services)
+            .AddView<DashboardView, DashboardViewModel>(services)
+            .AddView<DialogView, DialogViewModel>(services);
     }
 
     private static ServiceProvider ConfigureServices(ServiceCollection services)

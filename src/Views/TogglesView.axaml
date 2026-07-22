@@ -1,0 +1,167 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:suki="https://github.com/kikipoulet/SukiUI"
+    xmlns:vm="using:SukiUI_Demo.ViewModels"
+    x:Class="SukiUI_Demo.Views.TogglesView"
+    x:DataType="vm:TogglesViewModel"
+    mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Styles>
+        <!-- Margem padrão para separar os GlassCards no WrapPanel -->
+        <Style Selector="WrapPanel.PageContainer > suki|GlassCard">
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+    </UserControl.Styles>
+
+    <ScrollViewer Margin="12">
+        <WrapPanel Classes="PageContainer">
+            <!-- Radio Buttons -->
+            <suki:GlassCard>
+                <suki:GroupBox Header="Radio Buttons">
+                    <StackPanel VerticalAlignment="Center" Spacing="10">
+                        <RadioButton Content="Option One" GroupName="R1" IsChecked="True" />
+                        <RadioButton Content="Option Two" GroupName="R1" />
+                        <RadioButton Content="Option Three" GroupName="R1" />
+                        <RadioButton Content="Disabled" GroupName="R1" IsEnabled="False" />
+                    </StackPanel>
+                </suki:GroupBox>
+            </suki:GlassCard>
+
+            <!-- Simple Chips -->
+            <suki:GlassCard>
+                <suki:GroupBox Header="Simple Chips">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <RadioButton Height="40" Classes="Chips" Content="Option One" GroupName="R10" IsChecked="True" />
+                        <RadioButton Height="40" Classes="Chips" Content="Option Two" GroupName="R10" />
+                        <RadioButton Height="40" Classes="Chips" Content="Three State" GroupName="R10" />
+                        <RadioButton Height="40" Classes="Chips" Content="Disabled" GroupName="R10" IsEnabled="False"/>
+                    </StackPanel>
+                </suki:GroupBox>
+            </suki:GlassCard>
+
+            <!-- Simple GigaChips -->
+            <suki:GlassCard>
+                <suki:GroupBox Header="Simple GigaChips">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <RadioButton Height="60" Classes="GigaChips" Content="Option One" GroupName="R2" IsChecked="True" />
+                        <RadioButton Height="60" Classes="GigaChips" Content="Option Two" GroupName="R2" />
+                        <RadioButton Height="60" Classes="GigaChips" Content="Three State" GroupName="R2" />
+                        <RadioButton Height="60" Classes="GigaChips" Content="Disabled" GroupName="R2" IsEnabled="False"/>
+                    </StackPanel>
+                </suki:GroupBox>
+            </suki:GlassCard>
+
+            <!-- Complex GigaChips -->
+            <suki:GlassCard>
+                <suki:GroupBox Header="Complex GigaChips">
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal"
+                                Spacing="14">
+                        <RadioButton Width="210" Height="138" Classes="GigaChips" IsChecked="True">
+                            <StackPanel HorizontalAlignment="Left" Spacing="4">
+                                <TextBlock FontSize="12" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" Text="HOBBY" />
+                                <TextBlock FontSize="23" FontWeight="DemiBold" Text="1 Gb" />
+                                <TextBlock FontSize="15" Foreground="{DynamicResource SukiLowText}" Text="Plan for a moderate use as hobby." TextWrapping="Wrap" />
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton Width="210" Height="138" Classes="GigaChips">
+                            <StackPanel HorizontalAlignment="Left" Spacing="4">
+                                <TextBlock FontSize="12" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" Text="PROFESSIONAL" />
+                                <TextBlock FontSize="23" FontWeight="DemiBold" Text="5 Gb" />
+                                <TextBlock FontSize="15" Foreground="{DynamicResource SukiLowText}" Text="Professional use in an application." TextWrapping="Wrap" />
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton Width="210" Height="138" Classes="GigaChips">
+                            <StackPanel HorizontalAlignment="Left" Spacing="4">
+                                <TextBlock FontSize="12" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" Text="COMPANY" />
+                                <TextBlock FontSize="23" FontWeight="DemiBold" Text="50 Gb" />
+                                <TextBlock FontSize="15" Foreground="{DynamicResource SukiLowText}" Text="Plan for a industrial use in a company." TextWrapping="Wrap" />
+                            </StackPanel>
+                        </RadioButton>
+                    </StackPanel>
+                </suki:GroupBox>
+            </suki:GlassCard>
+
+            <!-- Toggle Switches -->
+            <suki:GlassCard>
+                <suki:GroupBox Header="Toggle Switches">
+                    <StackPanel Spacing="10">
+                        <ToggleSwitch IsChecked="True" />
+                        <ToggleSwitch OffContent="Switch Off." OnContent="Switch On." />
+                    </StackPanel>
+                </suki:GroupBox>
+            </suki:GlassCard>
+
+            <!-- Toggle Buttons -->
+            <suki:GlassCard>
+                <suki:GroupBox Header="Toggle Buttons">
+                    <StackPanel Spacing="8">
+                        <ToggleButton Content="Default" IsChecked="True" />
+                        <ToggleButton Classes="CircleGlass" Content="Class: CircleGlass" IsChecked="True" />
+                        <ToggleButton Classes="Basic" Content="Class: Basic" IsChecked="True" />
+                        <ToggleButton Classes="Discrete" Content="Class: Discrete" IsChecked="True" />
+                        <ToggleButton Classes="Accent" Content="Class: Accent" IsChecked="True" />
+                        <ToggleButton Classes="Success" Content="Class: Success" IsChecked="True" />
+                        <ToggleButton Classes="Information" Content="Class: Information" IsChecked="True" />
+                        <ToggleButton Classes="Warning" Content="Class: Warning" IsChecked="True" />
+                        <ToggleButton Classes="Danger" Content="Class: Danger" IsChecked="True" />
+                    </StackPanel>
+                </suki:GroupBox>
+            </suki:GlassCard>
+
+            <!-- Toggle Buttons (Switch) -->
+            <suki:GlassCard>
+                <suki:GroupBox Header="Toggle Buttons (Switch)">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <ToggleButton Classes="Switch" IsChecked="True" ToolTip.Tip="Switch" />
+                        <ToggleButton Classes="Switch Discrete" IsChecked="True" ToolTip.Tip="Switch Discrete" />
+                        <ToggleButton Classes="Switch Accent" IsChecked="True" ToolTip.Tip="Switch Accent" />
+                        <ToggleButton Classes="Switch Success" IsChecked="True" ToolTip.Tip="Switch Success" />
+                        <ToggleButton Classes="Switch Information" IsChecked="True" ToolTip.Tip="Switch Information" />
+                        <ToggleButton Classes="Switch Warning" IsChecked="True" ToolTip.Tip="Switch Warning" />
+                        <ToggleButton Classes="Switch Danger" IsChecked="True" ToolTip.Tip="Switch Danger" />
+                    </StackPanel>
+                </suki:GroupBox>
+            </suki:GlassCard>
+
+            <!-- ToggleSplitButtons -->
+            <suki:GlassCard>
+                <suki:GroupBox Header="ToggleSplitButtons">
+                    <StackPanel Spacing="10">
+                        <ToggleSplitButton Content="Toggle Me">
+                            <ToggleSplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Hello" />
+                                </MenuFlyout>
+                            </ToggleSplitButton.Flyout>
+                        </ToggleSplitButton>
+
+                        <ToggleSplitButton Content="Toggle Me" Classes="Accent">
+                            <ToggleSplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Hello" />
+                                </MenuFlyout>
+                            </ToggleSplitButton.Flyout>
+                        </ToggleSplitButton>
+                    </StackPanel>
+                </suki:GroupBox>
+            </suki:GlassCard>
+
+            <!-- CheckBoxes -->
+            <suki:GlassCard>
+                <suki:GroupBox Header="CheckBoxes">
+                    <StackPanel Spacing="8">
+                        <CheckBox Content="Option One" IsChecked="True" />
+                        <CheckBox Content="Option Two" />
+                        <CheckBox Content="Option Three" IsThreeState="True" />
+                        <CheckBox Content="Disabled" IsEnabled="False"/>
+                    </StackPanel>
+                </suki:GroupBox>
+            </suki:GlassCard>
+        </WrapPanel>
+    </ScrollViewer>
+</UserControl>
