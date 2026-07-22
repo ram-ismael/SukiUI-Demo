@@ -13,7 +13,6 @@ public partial class DashboardViewModel : DemoPageBase
 {
     [ObservableProperty] private bool _isLoggingIn;
 
-    // Added [property:] targets and initialized with = string.Empty
     [ObservableProperty]
     [property: Required]
     [property: MinLength(5)]
