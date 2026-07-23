@@ -7,7 +7,10 @@ using SukiUI.Dialogs;
 using SukiUI.Toasts;
 using SukiUI_Demo.Configs;
 using SukiUI_Demo.ViewModels;
+using SukiUI_Demo.ViewModels.Dialogs;
 using SukiUI_Demo.Views;
+using SukiUI_Demo.Views.Dashboard;
+using SukiUI_Demo.Views.Dialogs;
 
 namespace SukiUI_Demo;
 
@@ -38,10 +41,17 @@ public partial class App : Application
 
             // Add main view
             .AddView<WindowView, WindowViewModel>(services)
+
+            // Add pages
             .AddView<ButtonsView, ButtonsViewModel>(services)
             .AddView<TogglesView, TogglesViewModel>(services)
             .AddView<DashboardView, DashboardViewModel>(services)
-            .AddView<DialogView, DialogViewModel>(services);
+            .AddView<HelpersView, HelpersViewModel>(services)
+            .AddView<DialogsView, DialogsViewModel>(services)
+
+            // Add additional views
+            .AddView<DialogView, DialogViewModel>(services)
+            .AddView<VmDialogView, VmDialogViewModel>(services);
     }
 
     private static ServiceProvider ConfigureServices(ServiceCollection services)
