@@ -3,7 +3,9 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
+using SukiUI.Controls;
 using SukiUI.Dialogs;
+using SukiUI.Enums;
 using SukiUI.Toasts;
 using SukiUI_Demo.Configs;
 using SukiUI_Demo.ViewModels;
@@ -16,6 +18,8 @@ namespace SukiUI_Demo;
 
 public partial class App : Application
 {
+    public static SukiDialogManager SingleViewDialogManager { get; set; }  = new();
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -30,6 +34,25 @@ public partial class App : Application
             var views = ConfigureViews(services);
             var provider = ConfigureServices(services);
             desktop.MainWindow = views.CreateView<WindowViewModel>(provider) as Window;
+        }
+        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
+        {
+            var p = new Panel();
+            p.Children.Add(new SukiBackground(){Style = SukiBackgroundStyle.Bubble});
+            SingleViewDialogManager = new SukiDialogManager();
+            
+            p.Children.Add(new AllControlsView(){DataContext = new AllControlsViewModel(SingleViewDialogManager)});
+            
+            singleView.MainView = new SukiMainHost()
+            {
+                Hosts = [
+                    new SukiDialogHost
+                    {
+                        Manager = SingleViewDialogManager
+                    }
+                ],
+                Content =  p
+            };
         }
 
         base.OnFrameworkInitializationCompleted();
@@ -48,6 +71,10 @@ public partial class App : Application
             .AddView<DashboardView, DashboardViewModel>(services)
             .AddView<HelpersView, HelpersViewModel>(services)
             .AddView<DialogsView, DialogsViewModel>(services)
+            .AddView<ExpanderView, ExpanderViewModel>(services)
+            .AddView<InfoBarView, InfoBarViewModel>(services)
+            .AddView<ToastsView, ToastsViewModel>(services)
+            .AddView<AllControlsView, AllControlsViewModel>(services)
 
             // Add additional views
             .AddView<DialogView, DialogViewModel>(services)

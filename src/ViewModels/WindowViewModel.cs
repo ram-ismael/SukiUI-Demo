@@ -1,5 +1,5 @@
 /*
-today = EXPANDER   &   INFOBAR   &   TOASTS   &   ALL CONTROLS
+next = MISCELLANEOUS    &   PROGRESS    &   PROPERTYGRID    &   THEMING (NAVBAR)
 */
 
 

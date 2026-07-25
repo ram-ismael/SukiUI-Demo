@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <AvaloniaResource Include="src/Assets/**" />
+    <AvaloniaResource Include="src/Themes/**" />
   </ItemGroup>
 
   <ItemGroup>
