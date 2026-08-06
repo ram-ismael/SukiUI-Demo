@@ -75,6 +75,7 @@ public partial class App : Application
             .AddView<InfoBarView, InfoBarViewModel>(services)
             .AddView<ToastsView, ToastsViewModel>(services)
             .AddView<AllControlsView, AllControlsViewModel>(services)
+            .AddView<ThemingView, ThemingViewModel>(services)
 
             // Add additional views
             .AddView<DialogView, DialogViewModel>(services)
