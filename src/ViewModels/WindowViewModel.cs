@@ -1,5 +1,5 @@
 /*
-next = MISCELLANEOUS    &   PROGRESS    &   PROPERTYGRID    &   THEMING (NAVBAR)
+next = MISCELLANEOUS    &   PROPERTYGRID    &   THEMING (NAVBAR)
 */
 
 
