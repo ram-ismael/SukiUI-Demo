@@ -15,7 +15,7 @@
     mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     
     <Grid RowDefinitions="Auto,*">
-        <suki:GlassCard Classes="HeaderCard">
+        <suki:GlassCard Classes="HeaderCard" Margin="20, 20, 20, 10">
             <suki:GroupBox Header="Progress Indicators">
                 <StackPanel Classes="HeaderContent">
                     <TextBlock>
@@ -61,9 +61,9 @@
                 </StackPanel>
             </suki:GroupBox>
         </suki:GlassCard>
-        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
-            <WrapPanel Classes="PageContainer">
-                <suki:GlassCard Margin="20">
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" Margin="20, 10, 20, 20">
+            <WrapPanel Classes="PageContainer" ItemSpacing="20" LineSpacing="20">
+                <suki:GlassCard>
                     <suki:GroupBox Header="Wave Progress">
                         <Grid VerticalAlignment="Center">
                             <suki:WaveProgress IsTextVisible="{Binding IsTextVisible}" Value="{Binding ProgressValue}" />
@@ -218,7 +218,7 @@
                 
                 <suki:GlassCard>
                     <suki:GroupBox Header="Radial Gauge">
-                        <StackPanel Orientation="Horizontal" Margin="25" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="30">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="30">
   
                             
                             <gauges:RadialGauge
