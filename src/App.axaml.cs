@@ -77,12 +77,12 @@ public partial class App : Application
             .AddView<AllControlsView, AllControlsViewModel>(services)
             .AddView<ThemingView, ThemingViewModel>(services)
             .AddView<ProgressView, ProgressViewModel>(services)
-            .AddView<MiscView, MiscViewModel>(services)
-            .AddView<CustomThemeDialogView, CustomThemeDialogViewModel>(services)
+            .AddView<MiscView, MiscViewModel>(services)            
 
             // Add additional views
             .AddView<DialogView, DialogViewModel>(services)
-            .AddView<VmDialogView, VmDialogViewModel>(services);
+            .AddView<VmDialogView, VmDialogViewModel>(services)
+            .AddView<CustomThemeDialogView, CustomThemeDialogViewModel>(services);
     }
 
     private static ServiceProvider ConfigureServices(ServiceCollection services)
