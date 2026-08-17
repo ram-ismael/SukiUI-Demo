@@ -78,6 +78,7 @@ public partial class App : Application
             .AddView<ThemingView, ThemingViewModel>(services)
             .AddView<ProgressView, ProgressViewModel>(services)
             .AddView<MiscView, MiscViewModel>(services)
+            .AddView<CustomThemeDialogView, CustomThemeDialogViewModel>(services)
 
             // Add additional views
             .AddView<DialogView, DialogViewModel>(services)

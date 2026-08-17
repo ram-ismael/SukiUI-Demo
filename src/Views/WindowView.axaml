@@ -128,12 +128,23 @@
 
 
         </MenuItem>
-        <MenuItem Header="Themes">
-            <MenuItem Command="{Binding ToggleThemeCommand}" Header="Blue" />
-            <MenuItem Command="{Binding ToggleThemeCommand}" Header="Green" />
-            <MenuItem Command="{Binding ToggleThemeCommand}" Header="Orange" />
-            <MenuItem Command="{Binding ToggleThemeCommand}" Header="Red" />
+        
+        <MenuItem Header="Theme">
+            <MenuItem Click="ThemeMenuItem_OnClick"
+                      Header="Switch To..."
+                      ItemsSource="{Binding Themes}">
+                <MenuItem.DataTemplates>
+                    <DataTemplate DataType="{x:Type suki:SukiColorTheme}">
+                        <TextBlock Foreground="{Binding PrimaryBrush}" Text="{Binding DisplayName}" />
+                    </DataTemplate>
+                </MenuItem.DataTemplates>
+            </MenuItem>
+            <MenuItem Header="-" />
+            <MenuItem Command="{Binding CreateCustomThemeCommand}" Header="Create Custom" />
+            <MenuItem Header="-" />
+            <MenuItem Command="{Binding ShadCnModeCommand}" Header="Shadcn Mode" />
         </MenuItem>
+        
         <MenuItem Header="Help">
             <MenuItem Header="Licence" />
             <MenuItem Header="About" />

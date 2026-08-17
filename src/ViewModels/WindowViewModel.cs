@@ -1,5 +1,5 @@
 /*
-next = PROPERTYGRID    &   THEMING (NAVBAR)
+next = PROPERTYGRID
 */
 
 
@@ -20,6 +20,7 @@ using SukiUI;
 using SukiUI.Enums;
 using SukiUI.Models;
 using System;
+using SukiUI.Theme.Shadcn;
 
 namespace SukiUI_Demo.ViewModels;
 
@@ -45,6 +46,7 @@ public partial class WindowViewModel : ViewModelBase
 
     private readonly SukiTheme _theme;
     private readonly ThemingViewModel _theming;
+    public IAvaloniaReadOnlyList<SukiColorTheme> Themes { get; }
     public IAvaloniaReadOnlyList<SukiBackgroundStyle> BackgroundStyles { get; }
 
     [ObservableProperty] private bool _showTitleBar = true;
@@ -79,6 +81,25 @@ public partial class WindowViewModel : ViewModelBase
         var settings = ThemeHelper.Load();
         IsDarkMode = settings.IsDarkMode;
         ApplyTheme(IsDarkMode);
+
+        Themes = _theme.ColorThemes;
+        BaseTheme = _theme.ActiveBaseTheme;
+
+        // Subscribe to the base theme changed events
+        _theme.OnBaseThemeChanged += variant =>
+        {
+            BaseTheme = variant;
+            ToastManager.CreateSimpleInfoToast()
+                .WithTitle("Theme Changed")
+                .WithContent($"Theme has changed to {variant}.")
+                .Queue();
+        };
+
+        // Subscribe to the color theme changed events
+        _theme.OnColorThemeChanged += theme => ToastManager.CreateSimpleInfoToast()
+            .WithTitle("Color Changed")
+            .WithContent($"Color has changed to {theme.DisplayName}.")
+            .Queue();
     }
 
     partial void OnIsDarkModeChanged(bool value)
@@ -171,5 +192,19 @@ public partial class WindowViewModel : ViewModelBase
             .WithTitle($"Window {(WindowLocked ? "Locked" : "Unlocked")}")
             .WithContent($"Window has been {(WindowLocked ? "locked" : "unlocked")}.")
             .Queue();
+    }
+
+    [RelayCommand]
+    private void ShadCnMode()
+    {
+        Shadcn.Configure(Application.Current!, Application.Current!.ActualThemeVariant);
+    }
+
+    [RelayCommand]
+    private void CreateCustomTheme()
+    {
+        DialogManager.CreateDialog()
+            .WithViewModel(dialog => new CustomThemeDialogViewModel(_theme, dialog))
+            .TryShow();
     }
 }
